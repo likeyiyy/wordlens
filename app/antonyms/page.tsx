@@ -263,9 +263,9 @@ export default function AntonymsPage() {
                 </span>
               )}
             </div>
-            {/* Mobile: grid layout */}
-            <div className="md:hidden grid grid-cols-4 sm:grid-cols-5 gap-2 pb-2">
-              {filteredAntonyms.slice(0, 100).map((antonym, index) => {
+            {/* Mobile: horizontal scrollable pills */}
+            <div className="md:hidden flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 snap-x">
+              {filteredAntonyms.slice(0, 50).map((antonym, index) => {
                 const isActive = selectedAntonym?.pair === antonym.pair;
                 const cat1Info = CATEGORY_SYSTEM[antonym.category1 as Category1];
 
@@ -278,26 +278,25 @@ export default function AntonymsPage() {
                         document.getElementById('detail-panel')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
                       }, 100);
                     }}
-                    className={`px-2 py-2 rounded-md text-sm transition-all text-center ${
+                    className={`flex-shrink-0 px-3 py-1.5 rounded-full text-sm transition-all snap-start ${
                       isActive
                         ? "bg-white text-black font-medium"
                         : "text-[var(--muted-foreground)] hover:text-white hover:bg-white/5 border border-white/10"
                     }`}
                   >
-                    <span className="flex flex-col items-center gap-0.5">
+                    <span className="flex items-center gap-1">
                       <span className="opacity-70 text-xs">{cat1Info?.icon}</span>
-                      <span className="text-xs">{antonym.pair}</span>
+                      <span>{antonym.pair}</span>
                     </span>
                   </button>
                 );
               })}
+              {filteredAntonyms.length > 50 && (
+                <div className="flex-shrink-0 text-xs text-[var(--muted-foreground)] px-2 py-1.5 flex items-center">
+                  +{filteredAntonyms.length - 50}
+                </div>
+              )}
             </div>
-
-            {filteredAntonyms.length > 100 && (
-              <div className="md:hidden text-xs text-[var(--muted-foreground)] py-2 text-center">
-                还有 {filteredAntonyms.length - 100} 对...
-              </div>
-            )}
 
             {/* Desktop: vertical list */}
             <div className="hidden md:block max-h-[calc(100vh-240px)] overflow-y-auto space-y-0.5 pr-2">
