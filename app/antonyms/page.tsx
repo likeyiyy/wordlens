@@ -275,7 +275,7 @@ export default function AntonymsPage() {
                     onClick={() => {
                       setSelectedAntonym(antonym);
                       setTimeout(() => {
-                        document.getElementById('detail-panel')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        document.getElementById('detail-panel')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                       }, 100);
                     }}
                     className={`flex-shrink-0 px-3 py-1.5 rounded-full text-sm transition-all snap-start ${
