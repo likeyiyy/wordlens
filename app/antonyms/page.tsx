@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import antonymsData from "@/data/antonyms-merged.json";
+import antonymsData from "@/data/antonyms-classified.json";
 
 // 二级分类体系
 const CATEGORY_SYSTEM = {
