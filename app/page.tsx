@@ -64,14 +64,14 @@ export default function HomePage() {
             </div>
             <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">反义词库</h3>
             <p className="text-[var(--text-secondary)] text-sm mb-6">
-              50+ 对基础反义词，按空间、状态、程度、逻辑四大维度分类整理
+              融合《反义词大全》PDF 与 GLM-5 AI 判定，共 1,715 对中文反义词
             </p>
             <div className="flex flex-wrap gap-2">
               <span className="tag tag-blue">上下</span>
               <span className="tag tag-blue">冷热</span>
               <span className="tag tag-blue">多少</span>
               <span className="tag tag-blue">是非</span>
-              <span className="tag tag-gray">+46</span>
+              <span className="tag tag-purple">AI判定</span>
             </div>
           </Link>
 
@@ -126,7 +126,7 @@ export default function HomePage() {
 
           {/* 数据统计卡片 */}
           <div className="card p-6">
-            <div className="text-3xl font-bold gradient-text mb-1">50+</div>
+            <div className="text-3xl font-bold gradient-text mb-1">1715</div>
             <div className="text-sm text-[var(--text-tertiary)]">反义词对</div>
           </div>
 
@@ -207,7 +207,7 @@ export default function HomePage() {
               准备好探索认知的边界了吗？
             </h2>
             <p className="text-[var(--text-secondary)] mb-8 max-w-xl mx-auto">
-              从最基础的反义词开始，逐步建立起更复杂的认知框架
+              从 1,715 对反义词开始，逐步建立起更复杂的认知框架
             </p>
             <Link href="/antonyms" className="btn-primary inline-flex items-center gap-2">
               开始探索
