@@ -12,7 +12,7 @@ export default function CompoundsPage() {
     <div className="max-w-6xl mx-auto px-4 py-12">
       {/* Header */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">双字词拓展</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 gradient-text-secondary">双字词拓展</h1>
         <p className="text-lg text-gray-600 dark:text-gray-400">
           从单字反义词到常用双字词，看词语如何承载更丰富的语义
         </p>
@@ -21,8 +21,8 @@ export default function CompoundsPage() {
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Sidebar - Word List */}
         <div className="lg:col-span-1">
-          <div className="sticky top-8">
-            <h2 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">
+          <div className="sticky top-24">
+            <h2 className="text-lg font-semibold mb-4 gradient-text-secondary px-2">
               选择反义词对
             </h2>
             <div className="space-y-2 max-h-[60vh] overflow-y-auto pr-2">
@@ -30,10 +30,10 @@ export default function CompoundsPage() {
                 <button
                   key={index}
                   onClick={() => setSelectedIndex(index)}
-                  className={`w-full text-left p-3 rounded-lg transition ${
+                  className={`w-full text-left p-4 rounded-xl transition-all duration-300 ${
                     selectedIndex === index
-                      ? "bg-blue-600 text-white"
-                      : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700"
+                      ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg glow-secondary"
+                      : "glass-card text-gray-800 dark:text-gray-200 hover:bg-white/30"
                   }`}
                 >
                   <span className="text-xl font-medium">
@@ -47,18 +47,18 @@ export default function CompoundsPage() {
 
         {/* Main Content */}
         <div className="lg:col-span-2">
-          <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-800">
+          <div className="glass-card rounded-2xl p-8 animate-fade-in-up">
             {/* Opposite Words Header */}
-            <div className="flex items-center justify-center gap-6 mb-8 pb-6 border-b border-gray-200 dark:border-gray-800">
+            <div className="flex items-center justify-center gap-8 mb-10 pb-8 border-b border-gray-200/50 dark:border-gray-700/50">
               <div className="text-center">
-                <div className="text-6xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                <div className="text-7xl font-bold gradient-text mb-2">
                   {currentData.baseWord}
                 </div>
                 <div className="text-sm text-gray-500 dark:text-gray-400">基础字</div>
               </div>
-              <div className="text-4xl text-gray-300 dark:text-gray-600">VS</div>
+              <div className="text-4xl text-gray-300 dark:text-gray-600 font-light">VS</div>
               <div className="text-center">
-                <div className="text-6xl font-bold text-red-600 dark:text-red-400 mb-2">
+                <div className="text-7xl font-bold gradient-text-secondary mb-2">
                   {currentData.opposite}
                 </div>
                 <div className="text-sm text-gray-500 dark:text-gray-400">对立字</div>
@@ -76,7 +76,7 @@ export default function CompoundsPage() {
                   {currentData.words[0].compounds.map((word, index) => (
                     <span
                       key={index}
-                      className="px-4 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 rounded-full text-sm"
+                      className="px-4 py-2 bg-gradient-to-r from-blue-500/10 to-blue-600/10 dark:from-blue-500/20 dark:to-blue-600/20 text-blue-700 dark:text-blue-300 rounded-full text-sm border border-blue-200 dark:border-blue-800 hover:scale-105 transition-transform cursor-default"
                     >
                       {word}
                     </span>
@@ -86,14 +86,14 @@ export default function CompoundsPage() {
 
               {/* Opposite Word Compounds */}
               <div>
-                <h3 className="text-lg font-semibold mb-4 text-red-600 dark:text-red-400">
+                <h3 className="text-lg font-semibold mb-4 text-orange-500 dark:text-orange-400">
                   「{currentData.opposite}」的拓展词
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {currentData.words[1].compounds.map((word, index) => (
                     <span
                       key={index}
-                      className="px-4 py-2 bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300 rounded-full text-sm"
+                      className="px-4 py-2 bg-gradient-to-r from-orange-500/10 to-amber-500/10 dark:from-orange-500/20 dark:to-amber-500/20 text-orange-700 dark:text-orange-300 rounded-full text-sm border border-orange-200 dark:border-orange-800 hover:scale-105 transition-transform cursor-default"
                     >
                       {word}
                     </span>
@@ -103,29 +103,35 @@ export default function CompoundsPage() {
             </div>
 
             {/* Semantic Analysis */}
-            <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
-              <h3 className="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">
+            <div className="mt-10 pt-8 border-t border-gray-200/50 dark:border-gray-700/50">
+              <h3 className="text-lg font-semibold mb-4 gradient-text">
                 语义拓展观察
               </h3>
-              <div className="text-gray-600 dark:text-gray-400 space-y-2 text-sm">
-                <p>
-                  <span className="text-blue-600 dark:text-blue-400 font-medium">
-                    {currentData.baseWord}
-                  </span>
-                  字的拓展词往往带有{" "}
-                  <span className="font-medium">积极、向上、扩张</span> 的语义倾向
-                </p>
-                <p>
-                  <span className="text-red-600 dark:text-red-400 font-medium">
-                    {currentData.opposite}
-                  </span>
-                  字的拓展词往往带有{" "}
-                  <span className="font-medium">消极、向下、收缩</span> 的语义倾向
-                </p>
-                <p className="text-gray-500 dark:text-gray-500 italic mt-4">
-                  这种语义倾向反映了语言中的价值判断，但也存在例外和语境差异。
-                </p>
+              <div className="space-y-3">
+                <div className="glass-card rounded-xl p-4">
+                  <p className="text-gray-700 dark:text-gray-300">
+                    <span className="text-blue-600 dark:text-blue-400 font-bold">
+                      {currentData.baseWord}
+                    </span>
+                    <span className="mx-2">·</span>
+                    字的拓展词往往带有{" "}
+                    <span className="text-blue-600 dark:text-blue-400">积极、向上、扩张</span> 的语义倾向
+                  </p>
+                </div>
+                <div className="glass-card rounded-xl p-4">
+                  <p className="text-gray-700 dark:text-gray-300">
+                    <span className="text-orange-500 dark:text-orange-400 font-bold">
+                      {currentData.opposite}
+                    </span>
+                    <span className="mx-2">·</span>
+                    字的拓展词往往带有{" "}
+                    <span className="text-orange-500 dark:text-orange-400">消极、向下、收缩</span> 的语义倾向
+                  </p>
+                </div>
               </div>
+              <p className="text-gray-500 dark:text-gray-500 text-sm mt-4 italic">
+                这种语义倾向反映了语言中的价值判断，但也存在例外和语境差异。
+              </p>
             </div>
           </div>
 
@@ -134,16 +140,22 @@ export default function CompoundsPage() {
             <button
               onClick={() => setSelectedIndex(Math.max(0, selectedIndex - 1))}
               disabled={selectedIndex === 0}
-              className="px-6 py-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-300 dark:hover:bg-gray-700 transition"
+              className="px-6 py-3 rounded-xl glass-card hover:bg-white/30 disabled:opacity-50 disabled:cursor-not-allowed transition flex items-center gap-2"
             >
-              ← 上一组
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              上一组
             </button>
             <button
               onClick={() => setSelectedIndex(Math.min(compoundsData.compounds.length - 1, selectedIndex + 1))}
               disabled={selectedIndex === compoundsData.compounds.length - 1}
-              className="px-6 py-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-300 dark:hover:bg-gray-700 transition"
+              className="px-6 py-3 rounded-xl glass-card hover:bg-white/30 disabled:opacity-50 disabled:cursor-not-allowed transition flex items-center gap-2"
             >
-              下一组 →
+              下一组
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </button>
           </div>
         </div>
