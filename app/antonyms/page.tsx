@@ -68,6 +68,7 @@ export default function AntonymsPage() {
   const [selectedAntonym, setSelectedAntonym] = useState<typeof antonymsData.antonyms[0] | null>(null);
   const [selectedCategory1, setSelectedCategory1] = useState<string | null>(null);
   const [selectedCategory2, setSelectedCategory2] = useState<string | null>(null);
+  const [isFiltersExpanded, setIsFiltersExpanded] = useState(true);
 
   const { counts, subCounts } = getCategoryCounts(antonymsData.antonyms);
 
@@ -128,10 +129,23 @@ export default function AntonymsPage() {
                 style={{ paddingLeft: 40 }}
               />
             </div>
+
+            {/* Filter toggle button - mobile only */}
+            <button
+              onClick={() => setIsFiltersExpanded(!isFiltersExpanded)}
+              className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-[var(--muted-foreground)] hover:text-white hover:bg-white/5 transition-all md:hidden"
+            >
+              <svg className={`w-4 h-4 transition-transform ${isFiltersExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+              <span>筛选</span>
+              {(selectedCategory1 || selectedCategory2) && <span className="w-2 h-2 rounded-full bg-blue-500"></span>}
+            </button>
           </div>
 
-          {/* Category filters */}
-          <div className="flex flex-wrap gap-2">
+          {/* Category filters - collapsible */}
+          <div className={`${isFiltersExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden transition-all duration-200`}>
+            <div className="flex flex-wrap gap-2">
             <button
               onClick={() => { setSelectedCategory1(null); setSelectedCategory2(null); }}
               className={`h-9 px-4 rounded-md text-sm font-medium transition-all ${
@@ -161,11 +175,11 @@ export default function AntonymsPage() {
                 </button>
               );
             })}
-          </div>
+            </div>
 
-          {/* Subcategory filters */}
-          {selectedCategory1 && (
-            <div className="flex flex-wrap gap-2 mt-3">
+            {/* Subcategory filters */}
+            {selectedCategory1 && (
+              <div className="flex flex-wrap gap-2 mt-3">
               <button
                 onClick={() => setSelectedCategory2(null)}
                 className={`h-8 px-3 rounded-md text-xs font-medium transition-all ${
@@ -193,8 +207,9 @@ export default function AntonymsPage() {
                   </button>
                 );
               })}
-            </div>
-          )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
