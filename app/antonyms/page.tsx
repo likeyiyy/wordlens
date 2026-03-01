@@ -250,7 +250,7 @@ export default function AntonymsPage() {
             <div className="max-h-[calc(100vh-240px)] overflow-y-auto space-y-0.5 pr-2">
               {filteredAntonyms.slice(0, 200).map((antonym, index) => {
                 const isActive = selectedAntonym?.pair === antonym.pair;
-                const isGLM = antonym.source.includes('GLM');
+                // Source field removed
                 const cat1Info = CATEGORY_SYSTEM[antonym.category1 as Category1];
 
                 return (
@@ -263,19 +263,10 @@ export default function AntonymsPage() {
                         : "text-[var(--muted-foreground)] hover:text-white hover:bg-white/5"
                     }`}
                   >
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="truncate flex items-center gap-1.5">
-                        <span className="opacity-70">{cat1Info?.icon}</span>
-                        <span>{antonym.pair}</span>
-                      </span>
-                      <span className={`shrink-0 text-[10px] px-1.5 py-0.5 rounded ${
-                        isActive ? "bg-black/10" :
-                        isGLM ? "bg-purple-500/20 text-purple-400" :
-                        "bg-blue-500/20 text-blue-400"
-                      }`}>
-                        {isGLM ? 'AI' : 'PDF'}
-                      </span>
-                    </div>
+                    <span className="truncate flex items-center gap-1.5">
+                      <span className="opacity-70">{cat1Info?.icon}</span>
+                      <span>{antonym.pair}</span>
+                    </span>
                   </button>
                 );
               })}
@@ -333,28 +324,14 @@ export default function AntonymsPage() {
                   )}
                 </div>
 
-                {/* Info cards */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="card p-5">
-                    <h3 className="text-[11px] font-medium text-[var(--muted-foreground)] uppercase tracking-wider mb-3">
-                      数据来源
-                    </h3>
-                    <div className="flex gap-2 flex-wrap">
-                      {selectedAntonym.source.split('+').map((s, i) => (
-                        <span key={i} className={`badge ${s === 'PDF' ? "bg-blue-500/20 text-blue-400 border border-blue-500/30" : "bg-purple-500/20 text-purple-400 border border-purple-500/30"}`}>
-                          {s === 'GLM' ? 'GLM-5 AI' : s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="card p-5">
-                    <h3 className="text-[11px] font-medium text-[var(--muted-foreground)] uppercase tracking-wider mb-3">
-                      拼音
-                    </h3>
-                    <p className="text-sm font-mono text-[var(--muted-foreground)]">
-                      {selectedAntonym.char1} / {selectedAntonym.char2}
-                    </p>
-                  </div>
+                {/* Info card */}
+                <div className="card p-5 mb-6">
+                  <h3 className="text-[11px] font-medium text-[var(--muted-foreground)] uppercase tracking-wider mb-3">
+                    拼音
+                  </h3>
+                  <p className="text-sm font-mono text-[var(--muted-foreground)]">
+                    {selectedAntonym.char1} / {selectedAntonym.char2}
+                  </p>
                 </div>
 
                 {/* Reason */}
