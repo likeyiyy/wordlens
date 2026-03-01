@@ -17,14 +17,14 @@ export default function HomePage() {
             </div>
 
             {/* Headline */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight mb-6 animate-slide-up">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight mb-6 animate-slide-up">
               <span className="text-gradient">以语言为镜，</span>
               <br />
               <span className="text-gradient">映照认知边界</span>
             </h1>
 
             {/* Subtitle */}
-            <p className="text-lg md:text-xl text-[var(--muted-foreground)] max-w-2xl mb-10 animate-slide-up delay-100">
+            <p className="text-base sm:text-lg md:text-xl text-[var(--muted-foreground)] max-w-2xl mb-8 md:mb-10 animate-slide-up delay-100">
               从反义词到多维透镜，探索人类从二元对立到复杂认知的思维演进路径。
             </p>
 
@@ -62,7 +62,7 @@ export default function HomePage() {
             {/* 反义词库 - Large card */}
             <Link
               href="/antonyms"
-              className="bento-item group cursor-pointer hover:bg-white/[0.02] transition-colors md:row-span-2"
+              className="bento-item group cursor-pointer hover:bg-white/[0.02] transition-colors col-span-2 md:row-span-2"
             >
               <div className="flex items-start justify-between mb-6">
                 <div className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
@@ -88,7 +88,7 @@ export default function HomePage() {
             {/* 双字词 */}
             <Link
               href="/compounds"
-              className="bento-item group cursor-pointer hover:bg-white/[0.02] transition-colors md:row-span-2"
+              className="bento-item group cursor-pointer hover:bg-white/[0.02] transition-colors row-span-2"
             >
               <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-4">
                 <span className="text-xl">🔗</span>
@@ -119,7 +119,7 @@ export default function HomePage() {
             {/* 认知透镜 */}
             <Link
               href="/lens"
-              className="bento-item group cursor-pointer hover:bg-white/[0.02] transition-colors md:col-span-2"
+              className="bento-item group cursor-pointer hover:bg-white/[0.02] transition-colors col-span-2"
             >
               <div className="flex items-center gap-6">
                 <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
@@ -141,22 +141,22 @@ export default function HomePage() {
 
             {/* Stats */}
             <div className="bento-item">
-              <div className="text-4xl font-semibold text-gradient mb-1">1,715</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gradient mb-1">1,715</div>
               <div className="text-sm text-[var(--muted-foreground)]">反义词对</div>
             </div>
 
             <div className="bento-item">
-              <div className="text-4xl font-semibold text-gradient mb-1">4</div>
-              <div className="text-sm text-[var(--muted-foreground)]">认知维度</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gradient mb-1">4</div>
+              <div className="text-xs sm:text-sm text-[var(--muted-foreground)]">认知维度</div>
             </div>
 
             <div className="bento-item">
-              <div className="text-4xl font-semibold text-gradient mb-1">200+</div>
-              <div className="text-sm text-[var(--muted-foreground)]">拓展词语</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gradient mb-1">200+</div>
+              <div className="text-xs sm:text-sm text-[var(--muted-foreground)]">拓展词语</div>
             </div>
 
             <div className="bento-item">
-              <div className="text-4xl font-semibold text-gradient mb-1">∞</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gradient mb-1">∞</div>
               <div className="text-sm text-[var(--muted-foreground)]">认知可能</div>
             </div>
           </div>
@@ -175,7 +175,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {[
               {
                 number: "01",
@@ -193,9 +193,9 @@ export default function HomePage() {
                 description: "从二元到多维：二维象限、九宫格等模型是观察世界的更精细工具。避免「二极管思维」，拥抱复杂性，建立更立体的认知框架。",
               },
             ].map((item, index) => (
-              <div key={index} className="card card-hover p-8">
-                <div className="text-5xl font-semibold text-white/10 mb-6">{item.number}</div>
-                <h3 className="text-xl font-semibold mb-4">{item.title}</h3>
+              <div key={index} className="card card-hover p-6 md:p-8">
+                <div className="text-4xl md:text-5xl font-semibold text-white/10 mb-4 md:mb-6">{item.number}</div>
+                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">{item.title}</h3>
                 <p className="text-[var(--muted-foreground)] text-sm leading-relaxed">
                   {item.description}
                 </p>
@@ -208,11 +208,11 @@ export default function HomePage() {
       {/* CTA Section */}
       <section className="section border-t border-[var(--border)]">
         <div className="container">
-          <div className="card p-12 md:p-16 text-center glow">
-            <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-gradient">
+          <div className="card p-8 md:p-12 lg:p-16 text-center glow">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4 text-gradient">
               准备好探索认知的边界了吗？
             </h2>
-            <p className="text-[var(--muted-foreground)] mb-8 max-w-xl mx-auto text-lg">
+            <p className="text-[var(--muted-foreground)] mb-6 md:mb-8 max-w-xl mx-auto text-base md:text-lg">
               从 1,715 对反义词开始，逐步建立起更复杂的认知框架
             </p>
             <Link href="/antonyms" className="btn btn-primary">

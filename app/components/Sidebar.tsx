@@ -55,68 +55,92 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="app-sidebar" role="navigation">
-      {/* Logo */}
-      <div className="h-14 flex items-center px-4 border-b border-[var(--border)]">
-        <Link href="/" className="flex items-center gap-2" aria-label="WordLens">
-          <div className="text-white">
-            <Icons.logo />
-          </div>
-          <span className="font-semibold text-sm">WordLens</span>
-        </Link>
-      </div>
-
-      {/* Navigation */}
-      <nav className="flex-1 py-4 overflow-y-auto">
-        <div className="px-3">
-          {/* Section label */}
-          <div className="mb-2 px-3">
-            <span className="text-[11px] font-medium text-[var(--muted-foreground)] uppercase tracking-wider">
-              导航
-            </span>
-          </div>
-
-          {/* Nav items */}
-          <div className="space-y-0.5">
-            {NAV_ITEMS.map(({ href, label, icon }) => {
-              const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href);
-              const IconComponent = Icons[icon as keyof typeof Icons];
-
-              return (
-                <Link
-                  key={href}
-                  href={href}
-                  className={`flex items-center gap-3 px-3 py-1.5 rounded-md text-sm transition-all ${
-                    isActive
-                      ? "text-white bg-white/10 font-medium"
-                      : "text-[var(--muted-foreground)] hover:text-white hover:bg-white/5"
-                  }`}
-                >
-                  <span className="opacity-80">
-                    <IconComponent />
-                  </span>
-                  <span>{label}</span>
-                </Link>
-              );
-            })}
-          </div>
+    <>
+      {/* Desktop Sidebar */}
+      <aside className="app-sidebar" role="navigation">
+        {/* Logo */}
+        <div className="h-14 flex items-center px-4 border-b border-[var(--border)]">
+          <Link href="/" className="flex items-center gap-2" aria-label="WordLens">
+            <div className="text-white">
+              <Icons.logo />
+            </div>
+            <span className="font-semibold text-sm">WordLens</span>
+          </Link>
         </div>
-      </nav>
 
-      {/* Footer */}
-      <div className="p-4 border-t border-[var(--border)]">
-        <a
-          href="https://github.com/likeyiyy/wordlens"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-sm text-[var(--muted-foreground)] hover:text-white transition-colors"
-        >
-          <span className="opacity-80">
-            <Icons.github />
-          </span>
-          <span>GitHub</span>
-        </a>
-      </div>
-    </aside>
+        {/* Navigation */}
+        <nav className="flex-1 py-4 overflow-y-auto">
+          <div className="px-3">
+            {/* Section label */}
+            <div className="mb-2 px-3">
+              <span className="text-[11px] font-medium text-[var(--muted-foreground)] uppercase tracking-wider">
+                导航
+              </span>
+            </div>
+
+            {/* Nav items */}
+            <div className="space-y-0.5">
+              {NAV_ITEMS.map(({ href, label, icon }) => {
+                const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href);
+                const IconComponent = Icons[icon as keyof typeof Icons];
+
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={`flex items-center gap-3 px-3 py-1.5 rounded-md text-sm transition-all ${
+                      isActive
+                        ? "text-white bg-white/10 font-medium"
+                        : "text-[var(--muted-foreground)] hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    <span className="opacity-80">
+                      <IconComponent />
+                    </span>
+                    <span>{label}</span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </nav>
+
+        {/* Footer */}
+        <div className="p-4 border-t border-[var(--border)]">
+          <a
+            href="https://github.com/likeyiyy/wordlens"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm text-[var(--muted-foreground)] hover:text-white transition-colors"
+          >
+            <span className="opacity-80">
+              <Icons.github />
+            </span>
+            <span>GitHub</span>
+          </a>
+        </div>
+      </aside>
+
+      {/* Mobile Bottom Navigation */}
+      <nav className="mobile-bottom-nav">
+        {NAV_ITEMS.map(({ href, label, icon }) => {
+          const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href);
+          const IconComponent = Icons[icon as keyof typeof Icons];
+
+          return (
+            <Link
+              key={href}
+              href={href}
+              className={`mobile-nav-item ${isActive ? "active" : ""}`}
+            >
+              <span className="opacity-80">
+                <IconComponent />
+              </span>
+              <span>{label}</span>
+            </Link>
+          );
+        })}
+      </nav>
+    </>
   );
 }

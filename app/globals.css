@@ -220,11 +220,39 @@ a {
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
+  /* Default: 2 columns on mobile */
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 640px) {
+  .bento-grid {
+    /* 3 columns on tablet */
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    /* 4 columns on desktop */
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .bento-item {
   background: var(--background);
-  padding: 32px;
+  padding: 16px;
+}
+
+@media (min-width: 640px) {
+  .bento-item {
+    padding: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-item {
+    padding: 32px;
+  }
 }
 
 /* Subtle grid background */
@@ -327,6 +355,7 @@ aside.app-sidebar li {
   main.app-main-with-sidebar,
   footer.app-main-with-sidebar {
     margin-left: 0;
+    padding-bottom: 80px; /* Space for bottom nav */
   }
 
   .mobile-nav-toggle {
@@ -334,26 +363,52 @@ aside.app-sidebar li {
   }
 }
 
-/* Mobile nav */
-.mobile-nav-toggle {
+/* Mobile bottom navigation */
+.mobile-bottom-nav {
   display: none;
   position: fixed;
-  bottom: 16px;
-  right: 16px;
-  width: 48px;
-  height: 48px;
-  background: var(--foreground);
-  border-radius: 50%;
-  align-items: center;
-  justify-content: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border);
   z-index: 50;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  padding: 8px 0 max(env(safe-area-inset-bottom), 8px);
 }
 
 @media (max-width: 768px) {
-  .mobile-nav-toggle {
+  .mobile-bottom-nav {
     display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  color: var(--muted-foreground);
+  font-size: 11px;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  min-width: 60px;
+}
+
+.mobile-nav-item.active {
+  color: var(--foreground);
+}
+
+.mobile-nav-item:hover {
+  color: var(--foreground);
+}
+
+.mobile-nav-item svg {
+  width: 22px;
+  height: 22px;
 }
 
 /* Smooth scrolling */

@@ -236,9 +236,9 @@ export default function AntonymsPage() {
 
       {/* Main Content */}
       <div className="container py-6">
-        <div className="flex gap-6">
-          {/* Sidebar List */}
-          <div className="w-72 flex-shrink-0">
+        <div className="flex flex-col md:flex-row gap-6">
+          {/* Sidebar List - Mobile: horizontal scroll / Desktop: fixed width */}
+          <div className="w-full md:w-72 flex-shrink-0">
             <div className="text-[11px] font-medium text-[var(--muted-foreground)] uppercase tracking-wider mb-3 px-1">
               词条列表
               {filteredAntonyms.length > 0 && (
@@ -247,17 +247,52 @@ export default function AntonymsPage() {
                 </span>
               )}
             </div>
-            <div className="max-h-[calc(100vh-240px)] overflow-y-auto space-y-0.5 pr-2">
+            {/* Mobile: horizontal scrollable pills */}
+            <div className="md:hidden flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 snap-x">
+              {filteredAntonyms.slice(0, 50).map((antonym, index) => {
+                const isActive = selectedAntonym?.pair === antonym.pair;
+                const cat1Info = CATEGORY_SYSTEM[antonym.category1 as Category1];
+
+                return (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setSelectedAntonym(antonym);
+                      setTimeout(() => {
+                        document.getElementById('detail-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }, 100);
+                    }}
+                    className={`flex-shrink-0 px-3 py-1.5 rounded-full text-sm transition-all snap-start ${
+                      isActive
+                        ? "bg-white text-black font-medium"
+                        : "text-[var(--muted-foreground)] hover:text-white hover:bg-white/5 border border-white/10"
+                    }`}
+                  >
+                    <span className="flex items-center gap-1">
+                      <span className="opacity-70 text-xs">{cat1Info?.icon}</span>
+                      <span>{antonym.pair}</span>
+                    </span>
+                  </button>
+                );
+              })}
+              {filteredAntonyms.length > 50 && (
+                <div className="flex-shrink-0 text-xs text-[var(--muted-foreground)] px-2 py-1.5 flex items-center">
+                  +{filteredAntonyms.length - 50}
+                </div>
+              )}
+            </div>
+
+            {/* Desktop: vertical list */}
+            <div className="hidden md:block max-h-[calc(100vh-240px)] overflow-y-auto space-y-0.5 pr-2">
               {filteredAntonyms.slice(0, 200).map((antonym, index) => {
                 const isActive = selectedAntonym?.pair === antonym.pair;
-                // Source field removed
                 const cat1Info = CATEGORY_SYSTEM[antonym.category1 as Category1];
 
                 return (
                   <button
                     key={index}
                     onClick={() => setSelectedAntonym(antonym)}
-                    className={`w-full text-left px-3 py-2 rounded-md text-sm transition-all text-left ${
+                    className={`w-full text-left px-3 py-2 rounded-md text-sm transition-all ${
                       isActive
                         ? "bg-white text-black font-medium"
                         : "text-[var(--muted-foreground)] hover:text-white hover:bg-white/5"
@@ -275,31 +310,32 @@ export default function AntonymsPage() {
                   还有 {filteredAntonyms.length - 200} 对...
                 </div>
               )}
-              {filteredAntonyms.length === 0 && (
-                <div className="text-sm text-[var(--muted-foreground)] py-8 text-center">
-                  未找到匹配的反义词
-                </div>
-              )}
             </div>
+
+            {filteredAntonyms.length === 0 && (
+              <div className="text-sm text-[var(--muted-foreground)] py-8 text-center">
+                未找到匹配的反义词
+              </div>
+            )}
           </div>
 
           {/* Detail Panel */}
-          <div className="flex-1 min-w-0">
+          <div id="detail-panel" className="flex-1 min-w-0">
             {selectedAntonym ? (
               <div className="animate-fade-in">
                 {/* Large word display */}
-                <div className="flex items-center justify-center gap-12 mb-16 py-8">
+                <div className="flex items-center justify-center gap-4 md:gap-12 mb-8 md:mb-16 py-4 md:py-8">
                   <div className="text-center">
-                    <div className="text-7xl md:text-9xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-600">
+                    <div className="text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-600">
                       {selectedAntonym.char1}
                     </div>
                     <div className="text-xs text-[var(--muted-foreground)] mt-2 tracking-wider uppercase">字 A</div>
                   </div>
-                  <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                    <span className="text-[var(--muted-foreground)] text-2xl">↔</span>
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+                    <span className="text-[var(--muted-foreground)] text-xl md:text-2xl">↔</span>
                   </div>
                   <div className="text-center">
-                    <div className="text-7xl md:text-9xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-orange-400 to-orange-600">
+                    <div className="text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-semibold text-transparent bg-clip-text bg-gradient-to-b from-orange-400 to-orange-600">
                       {selectedAntonym.char2}
                     </div>
                     <div className="text-xs text-[var(--muted-foreground)] mt-2 tracking-wider uppercase">字 B</div>
@@ -307,7 +343,7 @@ export default function AntonymsPage() {
                 </div>
 
                 {/* Category badges */}
-                <div className="flex items-center justify-center gap-4 mb-8">
+                <div className="flex items-center justify-center gap-2 md:gap-4 mb-6 md:mb-8 flex-wrap">
                   {selectedAntonym.category1 && (() => {
                     const cat1Info = CATEGORY_SYSTEM[selectedAntonym.category1 as Category1];
                     return cat1Info ? (
