@@ -1,0 +1,84 @@
+{
+  "categories": [
+    {
+      "id": "space",
+      "name": "空间类",
+      "description": "描述位置、方向和空间的反义词",
+      "pairs": [
+        {"word1": "上", "word2": "下", "pinyin": "shàng / xià"},
+        {"word1": "高", "word2": "低", "pinyin": "gāo / dī"},
+        {"word1": "前", "word2": "后", "pinyin": "qián / hòu"},
+        {"word1": "内", "word2": "外", "pinyin": "nèi / wài"},
+        {"word1": "近", "word2": "远", "pinyin": "jìn / yuǎn"},
+        {"word1": "左", "word2": "右", "pinyin": "zuǒ / yòu"},
+        {"word1": "东", "word2": "西", "pinyin": "dōng / xī"},
+        {"word1": "南", "word2": "北", "pinyin": "nán / běi"},
+        {"word1": "深", "word2": "浅", "pinyin": "shēn / qiǎn"},
+        {"word1": "宽", "word2": "窄", "pinyin": "kuān / zhǎi"},
+        {"word1": "进", "word2": "退", "pinyin": "jìn / tuì"},
+        {"word1": "升", "word2": "降", "pinyin": "shēng / jiàng"},
+        {"word1": "始", "word2": "终", "pinyin": "shǐ / zhōng"}
+      ]
+    },
+    {
+      "id": "state",
+      "name": "状态类",
+      "description": "描述事物状态和属性的反义词",
+      "pairs": [
+        {"word1": "冷", "word2": "热", "pinyin": "lěng / rè"},
+        {"word1": "明", "word2": "暗", "pinyin": "míng / àn"},
+        {"word1": "动", "word2": "静", "pinyin": "dòng / jìng"},
+        {"word1": "干", "word2": "湿", "pinyin": "gān / shī"},
+        {"word1": "软", "word2": "硬", "pinyin": "ruǎn / yìng"},
+        {"word1": "新", "word2": "旧", "pinyin": "xīn / jiù"},
+        {"word1": "生", "word2": "熟", "pinyin": "shēng / shú"},
+        {"word1": "开", "word2": "关", "pinyin": "kāi / guān"},
+        {"word1": "真", "word2": "假", "pinyin": "zhēn / jiǎ"},
+        {"word1": "净", "word2": "脏", "pinyin": "jìng / zāng"},
+        {"word1": "快", "word2": "慢", "pinyin": "kuài / màn"},
+        {"word1": "强", "word2": "弱", "pinyin": "qiáng / ruò"},
+        {"word1": "浓", "word2": "淡", "pinyin": "nóng / dàn"}
+      ]
+    },
+    {
+      "id": "degree",
+      "name": "程度类",
+      "description": "描述程度、数量和规模的反义词",
+      "pairs": [
+        {"word1": "多", "word2": "少", "pinyin": "duō / shǎo"},
+        {"word1": "大", "word2": "小", "pinyin": "dà / xiǎo"},
+        {"word1": "长", "word2": "短", "pinyin": "cháng / duǎn"},
+        {"word1": "粗", "word2": "细", "pinyin": "cū / xì"},
+        {"word1": "厚", "word2": "薄", "pinyin": "hòu / báo"},
+        {"word1": "重", "word2": "轻", "pinyin": "zhòng / qīng"},
+        {"word1": "繁", "word2": "简", "pinyin": "fán / jiǎn"},
+        {"word1": "增", "word2": "减", "pinyin": "zēng / jiǎn"},
+        {"word1": "全", "word2": "缺", "pinyin": "quán / quē"},
+        {"word1": "满", "word2": "空", "pinyin": "mǎn / kōng"},
+        {"word1": "盈", "word2": "亏", "pinyin": "yíng / kuī"},
+        {"word1": "加", "word2": "减", "pinyin": "jiā / jiǎn"},
+        {"word1": "众", "word2": "寡", "pinyin": "zhòng / guǎ"}
+      ]
+    },
+    {
+      "id": "logic",
+      "name": "逻辑类",
+      "description": "描述逻辑关系和价值判断的反义词",
+      "pairs": [
+        {"word1": "是", "word2": "非", "pinyin": "shì / fēi"},
+        {"word1": "对", "word2": "错", "pinyin": "duì / cuò"},
+        {"word1": "有", "word2": "无", "pinyin": "yǒu / wú"},
+        {"word1": "黑", "word2": "白", "pinyin": "hēi / bái"},
+        {"word1": "好", "word2": "坏", "pinyin": "hǎo / huài"},
+        {"word1": "正", "word2": "负", "pinyin": "zhèng / fù"},
+        {"word1": "阴", "word2": "阳", "pinyin": "yīn / yáng"},
+        {"word1": "得", "word2": "失", "pinyin": "dé / shī"},
+        {"word1": "荣", "word2": "辱", "pinyin": "róng / rǔ"},
+        {"word1": "福", "word2": "祸", "pinyin": "fú / huò"},
+        {"word1": "吉", "word2": "凶", "pinyin": "jí / xiōng"},
+        {"word1": "存", "word2": "亡", "pinyin": "cún / wáng"},
+        {"word1": "兴", "word2": "衰", "pinyin": "xīng / shuāi"}
+      ]
+    }
+  ]
+}

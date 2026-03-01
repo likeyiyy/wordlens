@@ -1,0 +1,88 @@
+{
+  "dimensions": [
+    {
+      "id": "quadrant-1",
+      "name": "情绪-温度象限",
+      "type": "quadrant",
+      "xAxis": {
+        "name": "温度",
+        "negative": "冷",
+        "positive": "热",
+        "negativeWords": ["冷", "寒冷", "冷淡", "冰冷", "冷酷"],
+        "positiveWords": ["热", "炎热", "热情", "火热", "温暖"]
+      },
+      "yAxis": {
+        "name": "情绪",
+        "negative": "负面",
+        "positive": "正面",
+        "negativeWords": ["冷淡", "冷酷", "冷漠", "冷酷无情"],
+        "positiveWords": ["热情", "温暖", "热心", "热烈"]
+      },
+      "gradientWords": ["温", "温和", "平和", "不冷不热", "温吞"],
+      "description": "用温度隐喻情绪，观察冷热与正负面情绪的组合"
+    },
+    {
+      "id": "quadrant-2",
+      "name": "程度-变化象限",
+      "type": "quadrant",
+      "xAxis": {
+        "name": "程度",
+        "negative": "少/小",
+        "positive": "多/大",
+        "negativeWords": ["少", "小", "微", "寡", "缺"],
+        "positiveWords": ["多", "大", "巨", "众", "满"]
+      },
+      "yAxis": {
+        "name": "变化方向",
+        "negative": "减少",
+        "positive": "增加",
+        "negativeWords": ["减", "降", "退", "衰", "失"],
+        "positiveWords": ["增", "升", "进", "兴", "得"]
+      },
+      "gradientWords": ["持平", "维持", "稳定", "不变", "平衡"],
+      "description": "观察事物在不同程度和变化方向下的状态"
+    },
+    {
+      "id": "nine-grid-1",
+      "name": "空间-时间九宫格",
+      "type": "nineGrid",
+      "axes": [
+        {
+          "name": "空间",
+          "values": ["左/西", "中", "右/东"]
+        },
+        {
+          "name": "时间",
+          "values": ["过去", "现在", "未来"]
+        }
+      ],
+      "grid": [
+        ["过去+左", "过去+中", "过去+右"],
+        ["现在+左", "现在+中", "现在+右"],
+        ["未来+左", "未来+中", "未来+右"]
+      ],
+      "description": "结合空间位置与时间维度，观察事物在不同时空中的状态"
+    },
+    {
+      "id": "nine-grid-2",
+      "name": "高下-贵贱九宫格",
+      "type": "nineGrid",
+      "axes": [
+        {
+          "name": "地位",
+          "values": ["高/上", "中", "低/下"]
+        },
+        {
+          "name": "价值",
+          "values": ["贵/荣", "中", "贱/辱"]
+        }
+      ],
+      "grid": [
+        ["高贵", "中贵", "低贵"],
+        ["高中", "中中", "低中"],
+        ["高贱", "中贱", "低贱"]
+      ],
+      "description": "传统认知中的地位与价值维度组合，体现社会等级观念"
+    }
+  ]
+}
