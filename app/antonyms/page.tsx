@@ -85,9 +85,14 @@ export default function AntonymsPage() {
 
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
-      results = results.filter(a =>
+      const matched = results.filter(a =>
         a.char1.includes(q) || a.char2.includes(q) || a.pair.includes(q)
       );
+      // 搜索时：匹配的结果优先显示，然后是其他结果
+      const unmatched = results.filter(a =>
+        !a.char1.includes(q) && !a.char2.includes(q) && !a.pair.includes(q)
+      );
+      results = [...matched, ...unmatched];
     }
 
     return results;
